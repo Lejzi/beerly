@@ -1,0 +1,77 @@
+.splash-screen
+  width: 100%
+  height: 100vh
+  background-color: #fff
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+.main-screen 
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding: 50px
+  .logo
+    width: 100px
+    height: 100px
+  .nav 
+    button 
+      width: 100px
+      text-align: center
+      background-color: #fff
+      border: none
+      line-height: 40px
+      &.active
+        border-bottom: #111 solid 2px
+  .accordion
+    margin-top: 40px
+    width: 90vw
+    max-width: 800px 
+    .list-card
+      padding: 15px 50px
+      display: flex 
+      height: auto
+      flex-direction: column
+      align-items: center
+      margin-top: 20px
+      border-radius: 20px
+      box-shadow: 4px 4px 8px 1px rgba(0,0,0,0.3)
+      .top 
+        display: flex
+        width: 100%
+        justify-content: space-between
+        align-items: center
+      .carret 
+        font-size: 30px
+        font-weight: 500
+        line-height: 30px
+        transform: rotate(0)
+        border: none
+        background-color: #fff
+        transition-duration: 0.4s
+        &:hover 
+          cursor: pointer
+      .list-details
+        height: 0
+        width: 100%
+        opacity: 0
+      &.open 
+        align-items: flex-start
+        .carret
+          transform: rotate(-180deg)
+        .list-details
+          animation: fade 0.3s 0.1s forwards
+
+
+
+@keyframes fade
+  0%
+    height: 0
+    opacity: 0
+  70%
+    height: 100px
+    opacity: 0
+  100%
+    height: 100px
+    opacity: 1

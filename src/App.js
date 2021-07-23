@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import './styles/styles.sass';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Splash from './screens/Splash';
+import MainScreen from './screens/MainScreen';
+
+const App = () => {
+	const [data, setData] = useState('');
+
+	useEffect(() => {
+		const getData = async () => {
+			const response = await fetch('https://api.punkapi.com/v2/beers', {
+				method: 'GET',
+			});
+
+			const res = await response.json();
+
+			setData(res);
+		};
+		getData();
+	}, []);
+
+	const Screen = data === '' ? <Splash /> : <MainScreen data={data} />;
+
+	return <div className='App'>{Screen}</div>;
+};
 
 export default App;
